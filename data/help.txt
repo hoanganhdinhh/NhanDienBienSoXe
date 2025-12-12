@@ -1,0 +1,108 @@
+Cách dùng LabelImg để khoanh vùng object trong ảnh
+
+🚀 1. Cài đặt LabelImg trên macOS
+
+Cách 1 — Cài bằng pip (dễ nhất)
+
+pip install labelImg
+labelImg
+
+Nếu chạy được → DONE.
+
+Cách 2 — Dùng Homebrew
+
+brew install labelimg
+labelImg
+
+Nếu bạn dùng Apple Silicon (M1/M2/M3/M4), LabelImg chạy bình thường.
+
+🚀 2. Giao diện LabelImg – chỉ cần biết 5 nút
+
+Khi mở lên bạn chỉ cần quan tâm:
+
+Nút	Chức năng
+Open Dir	Chọn thư mục chứa ảnh
+Change Save Dir	Chọn nơi lưu file label .txt
+Create RectBox (W)	Vẽ bounding box
+Save (Ctrl/Cmd + S)	Lưu file .txt
+Next Image (D)	Qua ảnh tiếp theo
+
+🚀 3. Thiết lập đúng format YOLO (quan trọng!)
+
+Ngay khi mở LabelImg:
+
+🔹 Bước 1: Chọn YOLO format
+
+Menu View → YOLO
+(Mặc định LabelImg có thể là PASCAL VOC → đừng dùng!)
+
+🔹 Bước 2: Tạo danh sách class (label list)
+
+Tạo file classes.txt với nội dung:
+
+plate
+
+
+Sau đó vào LabelImg → Open file đó.
+
+Bây giờ bạn đã có class "plate" có ID = 0.
+
+🚀 4. Bắt đầu gán nhãn biển số
+🔹 Bước 1: Mở thư mục ảnh
+
+Click Open Dir → chọn folder chứa ảnh.
+
+🔹 Bước 2: Chọn nơi lưu label
+
+Click Change Save Dir
+→ chọn thư mục labels/train/ nếu đang label ảnh train
+→ hoặc labels/val/ nếu đang label ảnh val
+
+🔹 Bước 3: Vẽ bounding box
+
+Nhấn phím W (hoặc nút "Create RectBox")
+→ Kéo chuột khoanh lấy biển số.
+
+Ngay lập tức sẽ hiện popup chọn class:
+
+➡️ Chọn plate
+
+🚀 5. Lưu file label
+
+Nhấn Cmd + S (Save).
+
+LabelImg sẽ tự tạo file:
+
+ten_anh.txt
+
+
+Trong đó có 1 dòng dạng YOLO:
+
+0 0.543 0.491 0.230 0.115
+
+➡️ Nghĩa là:
+class = 0 (plate), x_center = 0.543, y_center = 0.491, width = 0.230, height = 0.115
+
+🚀 6. Qua ảnh tiếp theo
+
+Nhấn D để chuyển sang ảnh kế tiếp.
+
+Nhấn A để quay lại ảnh trước.
+
+🚀 7. Một vài mẹo để label nhanh hơn
+✔ Nhấn W liên tục để tạo box
+✔ Giữ phím D để đi nhanh qua ảnh
+✔ Lỡ vẽ sai box → nhấn Delete
+✔ Muốn chỉnh lại box → click vào box → kéo góc
+
+🚀 8. Kết quả bạn sẽ có
+
+Ví dụ trong dataset/labels/train/:
+
+img001.txt
+img002.txt
+img003.txt
+...
+
+Và mỗi file .txt chứa 1 hoặc nhiều dòng YOLO-format.
+YOLO sẽ đọc được toàn bộ và train chính xác.

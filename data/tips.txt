@@ -1,0 +1,17 @@
+🔧 Một số mẹo để model nhận biển số “ngon” hơn
+
+Dữ liệu đa dạng:
+
+Ban đêm, đèn pha, biển bị cháy sáng
+
+Nhiều loại xe, nhiều góc độ
+
+Biển bị che khuất một phần
+
+Augmentation:
+
+Nếu dùng Roboflow có thể bật: blur, noise, brightness, rotation…
+
+Cân bằng dữ liệu:
+
+Đừng chỉ toàn ảnh gần – hãy có cả ảnh xa, mờ, nghiêng.
